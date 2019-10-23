@@ -1,0 +1,2 @@
+language: node_js
+script: cd course-03/udacity-c3-restapi-user && npm install && npm test && ../udacity-c3-restapi-feed && npm install && npm test && ../udacity-c3-frontend && npm install && npm test
