@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  10.6
+before_install:
+  - sudo apt-get install -y build-essential python
+script: 
+  - cd course-03/udacity-c3-restapi-user && npm install
+  - cd ../udacity-c3-restapi-feed && npm install 
+  - cd ../udacity-c3-frontend && npm install
+  - cd ../udacity-c3-deployment/docker
+  # Set variables in Travis repo settings or run:
+  # travis env set DOCKER_USERNAME myusername
+  # travis env set DOCKER_PASSWORD secretsecret
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - BRANCH=$TRAVIS_BRANCH docker-compose -f docker-compose-build.yaml build --parallel
+  - BRANCH=$TRAVIS_BRANCH docker-compose -f docker-compose-build.yaml push

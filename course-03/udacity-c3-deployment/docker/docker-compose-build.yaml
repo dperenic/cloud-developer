@@ -1,0 +1,18 @@
+version: "3"
+services:
+  reverseproxy:
+    build:
+      context: .
+    image: dperenic/reverseproxy:$BRANCH 
+  backend_user:
+    build:
+      context: ../../udacity-c3-restapi-user
+    image: dperenic/udacity-restapi-user:$BRANCH
+  backend_feed:
+    build:
+      context: ../../udacity-c3-restapi-feed  
+    image: dperenic/udacity-restapi-feed:$BRANCH
+  frontend:
+    build:
+      context: ../../udacity-c3-frontend  
+    image: dperenic/udacity-frontend:$BRANCH
