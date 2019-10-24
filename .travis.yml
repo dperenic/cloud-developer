@@ -8,5 +8,9 @@ script:
   - cd ../udacity-c3-restapi-feed && npm install 
   - cd ../udacity-c3-frontend && npm install
   - cd ../udacity-c3-deployment/docker
+  # Set variables in Travis repo settings or run:
+  # travis env set DOCKER_USERNAME myusername
+  # travis env set DOCKER_PASSWORD secretsecret
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - BRANCH=$TRAVIS_BRANCH docker-compose -f docker-compose-build.yaml build --parallel
   - BRANCH=$TRAVIS_BRANCH docker-compose -f docker-compose-build.yaml push
