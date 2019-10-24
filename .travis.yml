@@ -3,4 +3,4 @@ node_js:
   10.6
 before_install:
   - sudo apt-get install -y build-essential python
-script: cd course-03/udacity-c3-restapi-user && npm install && ../udacity-c3-restapi-feed && npm install && ../udacity-c3-frontend && npm install
+script: cd course-03/udacity-c3-restapi-user && npm install && cd ../udacity-c3-restapi-feed && npm install && cd ../udacity-c3-frontend && npm install
