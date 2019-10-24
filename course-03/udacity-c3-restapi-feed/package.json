@@ -1,5 +1,5 @@
 {
-  "name": "udacity-c2-restapi",
+  "name": "udacity-c3-restapi-feed",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
@@ -15,6 +15,10 @@
   "keywords": [],
   "author": "Gabriel Ruttner",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dperenic/cloud-developer.git"
+  },
   "dependencies": {
     "@types/bcrypt": "^3.0.0",
     "@types/jsonwebtoken": "^8.3.2",
@@ -40,6 +44,7 @@
     "mocha": "^6.1.4",
     "ts-node-dev": "^1.0.0-pre.32",
     "tslint": "^5.14.0",
-    "typescript": "^3.3.4000"
+    "typescript": "^3.3.4000",
+    "marked": "^0.6.0"
   }
 }
