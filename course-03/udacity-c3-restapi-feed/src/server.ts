@@ -13,15 +13,26 @@ const c = config.dev;
   await sequelize.addModels(V0MODELS);
   await sequelize.sync();
 
+  var cors = require('cors')
   const app = express();
+  app.use(cors());
+  app.use(cors({credentials: true, origin: true}));
+  app.options('*', cors({credentials: true, origin: true}));
+
   const port = process.env.PORT || 8080; // default port to listen
   
   app.use(bodyParser.json());
 
   //CORS Should be restricted
   app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", c.url);
+    // res.header("Access-Control-Allow-Origin", c.url);
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Credentials", "true");
+    if(req.method === 'OPTIONS'){
+      res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET'); //to give access to all the methods provided
+      return res.status(200).json({});
+    }
+    res.header("Access-Control-Allow-Origin", "*");
     next();
   });
 
